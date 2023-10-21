@@ -45,6 +45,10 @@ export default function Header() {
                         ))
                     }
                 </div>
+                <div className="headerText">
+                    <h1 className="headerTitle">Find your next stay</h1>
+                    <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
+                </div>
             </div>
         </div >
     )
