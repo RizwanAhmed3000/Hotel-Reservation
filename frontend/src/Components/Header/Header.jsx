@@ -51,8 +51,8 @@ export default function Header() {
                         <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
                     </div>
                 </div>
+                    <Search />
             </div >
-            <Search />
         </>
     )
 }
