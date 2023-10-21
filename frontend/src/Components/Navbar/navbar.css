@@ -1,5 +1,5 @@
-.navbar{
-    background-color: #013074ff;
+.navbar {
+    background-color: #003580;
     color: white;
     padding: 5px 15px;
     height: 50px;
@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.navContainer{
+.navContainer {
     width: 100%;
     max-width: 1024px;
     display: flex;
@@ -15,7 +15,23 @@
     justify-content: space-between;
 }
 
-.logo{
+.logo {
     font-weight: 500;
     font-size: 2rem;
+}
+
+.navBtn {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: white;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+
+.navBtn:hover {
+    background-color: rgb(230, 230, 230);
 }

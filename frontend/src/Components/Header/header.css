@@ -1,0 +1,41 @@
+.header {
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.headerWrapper {
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0px 130px 0px;
+}
+
+.headerList {
+    display: flex;
+    gap: 35px;
+}
+
+.headerListItems {
+    padding: 5px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+
+.headerListItems:hover {
+    background-color: #07469e;
+}
+
+.active {
+    border: 2px solid white;
+    padding: 5px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

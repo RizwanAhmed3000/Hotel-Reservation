@@ -5,9 +5,9 @@ export default function Navbar() {
         <div className='navbar'>
             <div className="navContainer">
                 <span className="logo">Booking</span>
-                <div className="navBtns">
+                <div className="navItems">
                     <button className='navBtn'>Register</button>
-                    <button className='navBtn aaa'>Login</button>
+                    <button className='navBtn'>Login</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
-import ResponsiveAppBar from '../../Components/Navbar(MUI)/NavbarMui';
+// import ResponsiveAppBar from '../../Components/Navbar(MUI)/NavbarMui';
+import Header from '../../Components/Header/Header';
 import Navbar from '../../Components/Navbar/Navbar';
 import './home.css';
 
@@ -7,6 +8,7 @@ export default function Home() {
         <>
             <Navbar />
             {/* <ResponsiveAppBar/> */}
+            <Header />
         </>
     )
 }
