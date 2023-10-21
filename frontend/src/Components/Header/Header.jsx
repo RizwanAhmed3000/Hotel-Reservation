@@ -1,9 +1,9 @@
 import "./header.css";
 import { AirplanemodeActiveOutlined, AttractionsOutlined, KingBedOutlined, LocalTaxiOutlined, TimeToLeaveOutlined } from '@mui/icons-material';
+import Search from "../Search/Search";
 
 export default function Header() {
 
-    // let headerListItems = [<KingBedOutlined />, <AirplanemodeActiveOutlined />, <TimeToLeaveOutlined />, <AttractionsOutlined />, <LocalTaxiOutlined />];
     let headerListItems = [
         {
             icon: <KingBedOutlined />,
@@ -32,24 +32,27 @@ export default function Header() {
     ];
 
     return (
-        <div className="header">
-            <div className="headerWrapper">
-                <div className="headerList" >
-                    {
-                        headerListItems.map((item, index) => (
-                            <div className={item?.active ? "headerListItems active" : "headerListItems"}>
-                                <span className="item" key={index}>
-                                    {item?.icon}{item?.title}
-                                </span>
-                            </div>
-                        ))
-                    }
+        <>
+            <div className="header">
+                <div className="headerWrapper">
+                    <div className="headerList" >
+                        {
+                            headerListItems.map((item, index) => (
+                                <div className={item?.active ? "headerListItems active" : "headerListItems"}>
+                                    <span className="item" key={index}>
+                                        {item?.icon}{item?.title}
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className="headerText">
+                        <h1 className="headerTitle">Find your next stay</h1>
+                        <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
+                    </div>
                 </div>
-                <div className="headerText">
-                    <h1 className="headerTitle">Find your next stay</h1>
-                    <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
-                </div>
-            </div>
-        </div >
+            </div >
+            <Search />
+        </>
     )
 }

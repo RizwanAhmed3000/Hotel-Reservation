@@ -3,12 +3,13 @@
     color: white;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .headerWrapper {
     width: 100%;
     max-width: 1024px;
-    margin: 20px 0px 100px 0px;
+    margin: 20px 0px 90px 0px;
 }
 
 .headerList {

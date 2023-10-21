@@ -1,0 +1,46 @@
+.search {
+    color: black;
+    /* border: 1px solid red; */
+    /* position: absolute;
+    width: 100%;
+    bottom: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchWrapper {
+    display: flex;
+    /* border: 1px solid green; */
+    width: 75%;
+    background-color: #ffb700;
+    padding: 5px;
+    gap: 5px;
+    border-radius: 5px;
+}
+
+.searchItems{
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.searchHotelsInput{
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+.searchBtn{
+    background-color: #006ce4;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+}
