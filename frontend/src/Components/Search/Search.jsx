@@ -4,13 +4,14 @@ import { DateRange } from 'react-date-range';
 import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { format } from "date-fns";
 
 export default function Search() {
 
     const [date, setDate] = useState([
         {
             startDate: new Date(),
-            endDate: null,
+            endDate: new Date(),
             key: 'selection'
         }
     ]);
@@ -25,7 +26,7 @@ export default function Search() {
                 </div>
                 <div className="searchItems reactDateRange" onClick={() => setShowDate(!showDate)}>
                     <CalendarTodayOutlined />
-                    <span className="checkInDateInput" >date to date</span>
+                    <span className="checkInDateInput" >{`${format(date[0]?.startDate, "dd/mm/yyyy")} to ${format(date[0]?.endDate, "dd/mm/yyyy")}`}</span>
                     {
                         showDate && <DateRange
                             editableDateInputs={true}
