@@ -2,7 +2,7 @@ import "./header.css";
 import { AirplanemodeActiveOutlined, AttractionsOutlined, KingBedOutlined, LocalTaxiOutlined, TimeToLeaveOutlined } from '@mui/icons-material';
 import Search from "../Search/Search";
 
-export default function Header() {
+export default function Header({ type }) {
 
     let headerListItems = [
         {
@@ -34,7 +34,7 @@ export default function Header() {
     return (
         <>
             <div className="header">
-                <div className="headerWrapper">
+                <div className={type === 'hotelList' ? "headerWrapper listMode" : "headerWrapper"}>
                     <div className="headerList" >
                         {
                             headerListItems.map((item, index) => (
@@ -46,12 +46,20 @@ export default function Header() {
                             ))
                         }
                     </div>
-                    <div className="headerText">
-                        <h1 className="headerTitle">Find your next stay</h1>
-                        <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
-                    </div>
+                    {
+                        type === 'hotelList' ? '' : (
+                            <div className="headerText">
+                                <h1 className="headerTitle">Find your next stay</h1>
+                                <p className="headerDesc">Search deals on hotels, homes, and much more...</p>
+                            </div>
+                        )
+                    }
                 </div>
-                    <Search />
+                {
+                    type === 'hotelList' ? '' : (
+                        <Search />
+                    )
+                }
             </div >
         </>
     )

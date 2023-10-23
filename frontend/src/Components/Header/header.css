@@ -13,6 +13,10 @@
     margin: 20px 0px 90px 0px;
 }
 
+.listMode {
+    margin: 20px 0px 0px 0px;
+}
+
 .headerList {
     display: flex;
     gap: 10px;
