@@ -65,6 +65,52 @@
     top: 50px;
 }
 
-.checkInDateInput{
+.checkInDateInput {
     color: gray;
+}
+
+.personSearch {
+    color: gray;
+}
+
+.optionsList {
+    position: relative;
+}
+
+.optionsBox {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px -4px rgba(46,46,46,1);
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.optionCounterMinus,
+.optionCounterPlus {
+    padding: 5px 10px;
+    background-color: #006ce4;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.optionCounter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.optionCounterMinus:disabled{
+    cursor: not-allowed;
 }
