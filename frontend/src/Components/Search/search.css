@@ -63,6 +63,7 @@
 .dateRange {
     position: absolute;
     top: 50px;
+    z-index: 3;
 }
 
 .checkInDateInput {
@@ -78,6 +79,7 @@
 }
 
 .optionsBox {
+    z-index: 4;
     position: absolute;
     top: 50px;
     width: 100%;

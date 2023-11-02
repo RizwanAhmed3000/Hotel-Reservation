@@ -1,0 +1,29 @@
+.featured {
+    width: 100%;
+    height: 270px;
+    position: relative;
+    cursor: pointer;
+}
+
+.overlay {
+    width: 100%;
+    height: inherit;
+    background-image: linear-gradient(rgba(41, 41, 41, 0.61), rgba(255, 255, 255, 0));
+    position: absolute;
+    border-radius: 10px;
+}
+
+.featuredImg {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.featuredTitles {
+    position: absolute;
+    top: 0;
+    margin-left: 15px;
+    margin-top: 10px;
+    color: #fffff8;
+}
