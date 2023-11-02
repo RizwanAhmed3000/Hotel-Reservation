@@ -17,11 +17,13 @@
     /* flex-wrap: wrap; */
 }
 
-.homeGuestLove, .featuredDestinations{
+.homeGuestLove,
+.featuredDestinations,
+.propertyType {
     align-self: flex-start;
 }
 
-.topRatedHomesList{
+.topRatedHomesList, .propertyTypeList {
     width: 100%;
     display: flex;
     align-items: flex-start;

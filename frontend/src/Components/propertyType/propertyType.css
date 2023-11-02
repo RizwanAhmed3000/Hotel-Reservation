@@ -1,0 +1,12 @@
+.pt {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pt img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}

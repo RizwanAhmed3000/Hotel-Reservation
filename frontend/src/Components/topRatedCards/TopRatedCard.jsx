@@ -1,33 +1,33 @@
 import './topRatedCard.css'
 
-export default function TopRatedCard() {
+export default function TopRatedCard({ data }) {
     return (
         <div className='topCard'>
             <div className="topCardImg">
-                <img src="https://cf.bstatic.com/xdata/images/hotel/square600/13125860.webp?k=35b70a7e8a17a71896996cd55d84f742cd15724c3aebaed0d9b5ba19c53c430b&o=" alt="" />
+                <img src={data?.img} alt="" />
             </div>
             <div className="cardBottom">
                 <div className="topCardTitles">
-                    <h3>Hotel name</h3>
+                    <h3>{data?.name}</h3>
                     <p>Old Town, Poland</p>
                 </div>
                 <div className="topCardRatings">
                     <div className="ratingBox">
-                        8.7
+                        {data?.rating}
                     </div>
                     <p>Excellent</p>
-                    <p>1234 Reviews</p>
+                    <p>{data?.review} Reviews</p>
                 </div>
-                <Pricing />
+                <Pricing price={data?.price} />
             </div>
         </div>
     )
 }
 
-function Pricing() {
+function Pricing({ price }) {
     return (
         <div className="pricing">
-            <p>starting from <span className='amount'>PKR 44,000</span></p>
+            <p>starting from <span className='amount'>PKR {price}</span></p>
         </div>
     )
 }
