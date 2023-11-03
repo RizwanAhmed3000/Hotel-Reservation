@@ -1,0 +1,21 @@
+.hotelListContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hotelListWrapper{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    gap: 20px;
+}
+
+.listSearch{
+    flex: 1;
+}
+
+.listResult{
+    flex: 3;
+    border: 1px solid blue;
+}

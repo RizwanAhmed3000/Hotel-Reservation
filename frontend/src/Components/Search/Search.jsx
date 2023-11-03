@@ -5,8 +5,11 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
+import { useNavigate } from 'react-router-dom'
 
 export default function Search() {
+
+    const navigate = useNavigate()
 
     const [date, setDate] = useState([
         {
@@ -15,9 +18,10 @@ export default function Search() {
             key: 'selection'
         }
     ]);
+    const [destination, setDestination] = useState("")
     const [showDate, setShowDate] = useState(false)
     const [showOpitons, setShowOptions] = useState(false)
-    const [opitons, setOptions] = useState({
+    const [options, setOptions] = useState({
         adults: 1,
         childern: 0,
         room: 1,
@@ -27,9 +31,13 @@ export default function Search() {
         setOptions((prev) => {
             return {
                 ...prev,
-                [name]: opertation === 'inc' ? opitons[name] + 1 : opitons[name] - 1
+                [name]: opertation === 'inc' ? options[name] + 1 : options[name] - 1
             }
         })
+    }
+
+    function searchHandler() {
+        navigate('/hotels', { state: { destination, date, options } })
     }
 
     return (
@@ -37,7 +45,7 @@ export default function Search() {
             <div className="searchWrapper">
                 <div className="searchItems">
                     <KingBedOutlined />
-                    <input type="text" placeholder="Search Hotels..." className="searchHotelsInput" />
+                    <input type="text" placeholder="Search Hotels..." className="searchHotelsInput" onChange={e => setDestination(e.target.value)} />
                 </div>
                 <div className="searchItems reactDateRange" onClick={() => setShowDate(!showDate)}>
                     <CalendarTodayOutlined />
@@ -49,17 +57,18 @@ export default function Search() {
                             moveRangeOnFirstSelection={false}
                             ranges={date}
                             className="dateRange"
+                            minDate={new Date()}    
                         />
                     }
                 </div>
                 <div className="searchItems optionsList" >
                     <PersonOutlineOutlined />
-                    <span className="personSearch " onClick={() => setShowOptions(!showOpitons)}>{`${opitons.adults} adult ${opitons.childern} childerns ${opitons.room} rooms`}</span>
+                    <span className="personSearch " onClick={() => setShowOptions(!showOpitons)}>{`${options.adults} adult ${options.childern} childerns ${options.room} rooms`}</span>
                     {
-                        showOpitons && <Options optionHandler={optionHandler} opitons={opitons} />
+                        showOpitons && <Options optionHandler={optionHandler} opitons={options} />
                     }
                 </div>
-                <button className="searchBtn">Search</button>
+                <button className="searchBtn" onClick={searchHandler}>Search</button>
             </div>
         </div>
     )
