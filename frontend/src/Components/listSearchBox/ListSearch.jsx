@@ -36,8 +36,34 @@ export default function ListSearch() {
                     <span className="lsOptionText">
                         Min Price <small>per night</small>
                     </span>
+                    <input type="number" className='lsOptionInput' />
+                </div>
+                <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                        Max Price <small>per night</small>
+                    </span>
+                    <input type="number" className='lsOptionInput' />
+                </div>
+                <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                        Adults
+                    </span>
+                    <input type="number" min={1} className='lsOptionInput' placeholder={options?.adults} />
+                </div>
+                <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                        Children
+                    </span>
+                    <input type="number" min={0} className='lsOptionInput' placeholder={options?.childern} />
+                </div>
+                <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                        Room
+                    </span>
+                    <input type="number" min={1} className='lsOptionInput' placeholder={options?.room} />
                 </div>
             </div>
+            <button className='lsBtn'>Search</button>
         </div>
     )
 }

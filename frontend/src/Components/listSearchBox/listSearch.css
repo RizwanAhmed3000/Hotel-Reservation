@@ -36,3 +36,24 @@
     align-items: center;
     cursor: pointer;
 }
+
+.lsOptionItem{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.lsOptionInput{
+    width: 60px;
+    padding: 0px 3px;
+}
+
+.lsBtn{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: white;
+    background-color: #254bddff;
+    border-radius: 5px;
+}
