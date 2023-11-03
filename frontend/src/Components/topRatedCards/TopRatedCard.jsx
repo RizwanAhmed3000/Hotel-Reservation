@@ -16,7 +16,7 @@ export default function TopRatedCard({ data }) {
                         {data?.rating}
                     </div>
                     <p>Excellent</p>
-                    <p>{data?.review} Reviews</p>
+                    <p>{data?.reviews} Reviews</p>
                 </div>
                 <Pricing price={data?.price} />
             </div>
