@@ -50,7 +50,7 @@ export default function Footer() {
                     <li className="fListItems">Places of interest</li>
                 </ul>
             </div>
-            <div className="ftext">Copyright © 1996–2023 Booking.com™. All rights reserved.
+            <div className="ftext">Copyright © 1996–2023 Booking™. All rights reserved.
             </div>
         </div>
     )
