@@ -19,7 +19,21 @@ export default function SearchItem() {
                     You can cancel later, so lock in this great price today!
                 </span>
             </div>
-            <div className="siDetails"></div>
+            <div className="siDetails">
+                <div className="siRating">
+                    <span>Excellent</span>
+                    <button className="ratingBox">8.9</button>
+                </div>
+                <div className="siDetailTexts">
+                    <span className="siPrice">
+                        PKR 44,999
+                    </span>
+                    <span className="siTax">
+                        Includes taxes and fees
+                    </span>
+                    <button className="siCheckBtn lsBtn">See Availablity</button>
+                </div>
+            </div>
         </div>
     )
 }
