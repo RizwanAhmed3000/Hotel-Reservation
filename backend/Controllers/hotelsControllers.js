@@ -1,5 +1,7 @@
 import Hotel from "../Models/Hotel.js"
 
+// CREATE A HOTEL
+// http://localhost:8800/api/hotels/
 export async function createHotel(req, res) {
     const newHotel = new Hotel(req.body);
     try {
@@ -17,6 +19,8 @@ export async function createHotel(req, res) {
     }
 }
 
+// UPDATE A HOTEL
+// http://localhost:8800/api/hotels/:hotelId
 export async function updateHotel(req, res) {
     try {
         const updatedHotel = await Hotel.findByIdAndUpdate(req.params.hotelId, { $set: req.body }, { new: true })
@@ -33,6 +37,8 @@ export async function updateHotel(req, res) {
     }
 }
 
+// DELETE A HOTEL
+// http://localhost:8800/api/hotels/:hotelId
 export async function deleteHotel(req, res) {
     try {
         const hotelToDelete = await Hotel.findById(req.params.hotelId)
@@ -57,6 +63,8 @@ export async function deleteHotel(req, res) {
     }
 }
 
+//GET A SINGLE HOTEL
+// http://localhost:8800/api/hotels/:hotelId
 export async function getSingleHotel(req, res) {
     try {
         const singleHotel = await Hotel.findById(req.params.hotelId)
@@ -73,6 +81,8 @@ export async function getSingleHotel(req, res) {
     }
 }
 
+// GET ALL HOTELS
+// http://localhost:8800/api/hotels/
 export async function getAllHotel(req, res) {
     try {
         const allHotels = await Hotel.find()
