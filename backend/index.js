@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import authRoutes from './Routes/auth.js';
+import authRoutes from './Routes/authRoutes.js';
 import usersRoutes from './Routes/users.js';
 import hotelsRoutes from './Routes/hotelsRoutes.js';
 import roomsRoutes from './Routes/rooms.js';
@@ -32,6 +32,18 @@ app.use('/api/auth', authRoutes)
 app.use('/api/hotels', hotelsRoutes)
 app.use('/api/rooms', roomsRoutes)
 app.use('/api/users', usersRoutes)
+
+//Error middleware
+app.use((err, req, res, next) => {
+    const errorStatus = err.status || 500
+    const errorMessage = err.message || "Something went wrong!"
+    return res.status(errorStatus).send({
+        status: "falied",
+        errorStatus: errorStatus,
+        message: errorMessage,
+        stack: err.stack
+    })
+})
 
 app.listen(PORT, () => {
     console.log("listening to port", PORT);
