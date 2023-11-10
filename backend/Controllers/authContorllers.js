@@ -31,29 +31,26 @@ export async function signUp(req, res, next) {
 
 export async function login(req, res, next) {
     try {
-        const user = await UserModel.findOne({ email: req.body.email } || { username: req.body.username });
+        const user = await UserModel.findOne({ username: req.body.username });
         if (!user) {
             next(createError(404, "User not found"))
             return
         };
-
         const isCorrect = await bcryptjs.compare(req.body.password, user.password);
         if (!isCorrect) {
             next(createError(400, "Incorrect email or password"))
             return
         };
-
-        const token = jwt.sign({ id: user._id }, process.env.JWT);
-        // console.log(token, "===> access token from signin");
-        const { password, ...other } = user._doc;
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT);
+        const { password, isAdmin, ...other } = user._doc;
         res.cookie("access_token", token, {
             httpOnly: true
         }).status(200).send({
             status: "Success",
             message: "User sign in successfully",
-            data: other
+            data: other,
+            access_token: token
         });
-
     } catch (error) {
         next(createError(error.status, error.message))
     }

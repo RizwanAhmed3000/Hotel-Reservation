@@ -2,10 +2,11 @@ import express from 'express'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import authRoutes from './Routes/authRoutes.js';
-import usersRoutes from './Routes/users.js';
+import usersRoutes from './Routes/usersRoutes.js';
 import hotelsRoutes from './Routes/hotelsRoutes.js';
 import roomsRoutes from './Routes/rooms.js';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const PORT = 8800;
@@ -24,6 +25,7 @@ const connect = () => {
 };
 
 // middleware
+app.use(cookieParser())
 app.use(express.json())
 app.use(morgan('common'))
 
