@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import authRoutes from './Routes/authRoutes.js';
 import usersRoutes from './Routes/usersRoutes.js';
 import hotelsRoutes from './Routes/hotelsRoutes.js';
-import roomsRoutes from './Routes/rooms.js';
+import roomsRoutes from './Routes/roomsRoutes.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
