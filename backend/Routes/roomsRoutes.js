@@ -5,13 +5,13 @@ import { verifyAdmin } from '../utils/verifyToken.js';
 const roomsRoutes = express.Router();
 
 // CREATE
-roomsRoutes.post('/', verifyAdmin, createRoom)
+roomsRoutes.post('/:hotelId', verifyAdmin, createRoom)
 
 // UPDATE
 roomsRoutes.put('/:id', verifyAdmin, updateRoom)
 
 // DELETE
-roomsRoutes.delete('/:id', verifyAdmin, deleteRoom)
+roomsRoutes.delete('/:id/:hotelId', verifyAdmin, deleteRoom)
 
 // GET
 roomsRoutes.get('/:id', getSingleRoom)

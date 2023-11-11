@@ -38,8 +38,9 @@ export async function updateRoom(req, res, next) {
 }
 
 // DELETE A ROOMS
-// http://localhost:8800/api/rooms/:id
+// http://localhost:8800/api/rooms/:id/:hotelId
 export async function deleteRoom(req, res, next) {
+    const hotelId = req.params.hotelId;
     try {
         const roomToDelete = await Room.findById(req.params.id)
         if (!roomToDelete) {
@@ -49,6 +50,9 @@ export async function deleteRoom(req, res, next) {
             })
         } else {
             await roomToDelete.deleteOne()
+            await Hotel.findByIdAndUpdate(hotelId, {
+                $pull: { rooms: req.params.id }
+            })
             res.status(200).send({
                 status: "success",
                 message: "Room deleted"
@@ -67,7 +71,7 @@ export async function getSingleRoom(req, res, next) {
         const singleRoom = await Room.findById(req.params.id)
         res.status(200).send({
             status: "success",
-            message: "Hotel found",
+            message: "Room found",
             data: singleRoom
         })
     } catch (error) {
@@ -82,7 +86,7 @@ export async function getAllRoom(req, res, next) {
         const allRoom = await Room.find()
         res.status(200).send({
             status: "success",
-            message: "List of all hotels",
+            message: "List of all Rooms",
             data: allRoom
         })
     } catch (error) {
