@@ -72,8 +72,9 @@ export async function getSingleHotel(req, res, next) {
 // GET ALL HOTELS
 // http://localhost:8800/api/hotels/
 export async function getAllHotel(req, res, next) {
+    const { min, max, ...others } = req.query
     try {
-        const allHotels = await Hotel.find()
+        const allHotels = await Hotel.find({ ...others, chipestPrice: { $gt: min || 1, $lt: max || 999 } }).limit(req.query.limit || 4)
         res.status(200).send({
             status: "success",
             message: "List of all hotels",
