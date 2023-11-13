@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch'
 import './topRatedCard.css'
 
 export default function TopRatedCard() {
-    const { data, loading, error } = useFetch("/hotels?featured=true")
+    const { data, loading, error } = useFetch("/hotels?featured=true&limit=4")
     // console.log(data)
 
     const images = [
