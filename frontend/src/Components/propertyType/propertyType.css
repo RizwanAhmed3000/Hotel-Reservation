@@ -2,11 +2,20 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 
 .pt img {
     border-radius: 10px;
     width: 100%;
     object-fit: cover;
+    height: 180px;
+}
+
+.pt>h3{
+    text-transform: capitalize;
+}
+
+.pt>p{
+    font-size: 12px;
 }

@@ -7,6 +7,7 @@ import hotelsRoutes from './Routes/hotelsRoutes.js';
 import roomsRoutes from './Routes/roomsRoutes.js';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const app = express();
 const PORT = 8800;
@@ -28,6 +29,7 @@ const connect = () => {
 app.use(cookieParser())
 app.use(express.json())
 app.use(morgan('common'))
+app.use(cors())
 
 //Routes
 app.use('/api/auth', authRoutes)

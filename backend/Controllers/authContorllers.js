@@ -41,7 +41,7 @@ export async function login(req, res, next) {
             next(createError(400, "Incorrect email or password"))
             return
         };
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT);
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT, { expiresIn: '24h' });
         const { password, isAdmin, ...other } = user._doc;
         res.cookie("access_token", token, {
             httpOnly: true
