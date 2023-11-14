@@ -10,7 +10,7 @@ export default function PropertyType() {
         "https://the-view-luxury-villas.com/wp-content/uploads/2019/11/Luxury-Villas-Lefkada-Infinity-Pool-und-Garten6.jpg",
         "https://www.travelandleisure.com/thmb/W9KQ1wbavKQN6GyqyMxNEghgfF8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-header-gatlinburg-tennessee-CABINS0123-ac308b389b7b4526a3eb8f5703608f6f.jpg",
     ]
-    return (
+    return ( 
         <>
             {loading ? "Loading please wait"
                 :

@@ -5,22 +5,27 @@ import { useLocation } from 'react-router-dom'
 import './listSearch.css'
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import useFetch from '../../hooks/useFetch'
 
 
-export default function ListSearch() {
-    const location = useLocation()
+export default function ListSearch({ destination, location }) {
+    // const location = useLocation()
     // console.log(location)
 
-    const [destination, setDestination] = useState(location.state.destination)
     const [date, setDate] = useState(location.state.date)
     const [openDate, setOpenDate] = useState(false)
     const [options, setOptions] = useState(location.state.options)
+
+    // const { data, loading, error } = useFetch(`/hotels?city=${destination}`)
+    // console.log(data, "==>> data")
+    // setDataFromSearch(data)
+    // setLoadingFromSearch(loading)
 
     return (
         <div className='lsContainer'>
             <h1 className='lsTitle'>Search</h1>
             <div className="lsItem">
-                <label htmlFor="">Description</label>
+                <label htmlFor="">Destination</label>
                 <input type="text" placeholder={destination} />
             </div>
             <div className="lsItem">
