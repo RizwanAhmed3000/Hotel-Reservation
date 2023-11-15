@@ -26,7 +26,7 @@ export default function HotelsList() {
             <div className="hotelListContainer">
                 <div className="hotelListWrapper">
                     <div className="listSearch">
-                        <ListSearch destination={destination} location={location} setMin={setMin} setMax={setMax} searchHandler={searchHandler} />
+                        <ListSearch setDestination={setDestination} destination={destination} location={location} setMin={setMin} setMax={setMax} searchHandler={searchHandler} />
                     </div>
                     <div className="listResult">
                         {loading ? "Loading please wait" : <>

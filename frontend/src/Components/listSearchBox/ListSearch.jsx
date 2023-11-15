@@ -8,7 +8,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import useFetch from '../../hooks/useFetch'
 
 
-export default function ListSearch({ destination, location, setMin, setMax, searchHandler }) {
+export default function ListSearch({ setDestination, destination, location, setMin, setMax, searchHandler }) {
     // const location = useLocation()
     // console.log(location)
 
@@ -28,7 +28,7 @@ export default function ListSearch({ destination, location, setMin, setMax, sear
             <h1 className='lsTitle'>Search</h1>
             <div className="lsItem">
                 <label htmlFor="">Destination</label>
-                <input type="text" placeholder={destination} />
+                <input type="text" placeholder={destination} onChange={e => setDestination(e.target.value)} />
             </div>
             <div className="lsItem">
                 <label htmlFor="">Check-in date</label>

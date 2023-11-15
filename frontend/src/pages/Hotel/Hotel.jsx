@@ -4,8 +4,18 @@ import Header from '../../Components/Header/Header';
 import MailList from '../../Components/mailList/MailList';
 import Footer from '../../Components/footer/Footer';
 import { LocationOn } from '@mui/icons-material';
+import useFetch from '../../hooks/useFetch'
+import { useLocation } from 'react-router-dom';
 
 export default function Hotel() {
+    const location = useLocation()
+    // console.log(location)
+    const hotelId = location.pathname.split("/")[2]
+    // console.log(hotelId)
+
+    const { data, loading, error, reFetchData } = useFetch(`/hotels/find/${hotelId}`)
+    console.log(data)
+
 
     const photo = [
         {
@@ -35,31 +45,31 @@ export default function Hotel() {
             <div className="hotelContainer">
                 <div className="hotelWrapper">
                     <button className="bookNow lsBtn">Reserve or Book now</button>
-                    <h1 className='hotelTitle'>Hotel Name</h1>
+                    <h1 className='hotelTitle'>{data?.name}</h1>
                     <div className="hotelAddress">
                         <LocationOn fontSize='15px' />
-                        <span>this is the address</span>
+                        <span>{data?.address}</span>
                     </div>
                     <div className="hotelDistance">
-                        Excellent loaction - 500m from the center
+                        Excellent loaction - {data?.distanceFromCityCenter} from the center
                     </div>
                     <div className="hotelPriceHighlights">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, dicta.
                     </div>
                     <div className="hotelImgs">
                         {
-                            photo.map((photo) => (
+                            data?.photo?.map((photo) => (
                                 <div className="hotelImgWraper">
-                                    <img src={photo?.src} alt="" className="hotelImg" />
+                                    <img src={photo} alt="" className="hotelImg" />
                                 </div>
                             ))
                         }
                     </div>
                     <div className="hotelDetails">
                         <div className="hotelDetailsTexts">
-                            <h1 className="hotelDetailTitle">Stay in the heart of Pakistan</h1>
+                            <h1 className="hotelDetailTitle">{data?.title}</h1>
                             <p className="hdDesc">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A autem, necessitatibus quia corrupti officia ullam et omnis id animi adipisci natus culpa accusantium rem dicta at labore provident consectetur similique repudiandae unde maxime. Voluptate vero quidem laudantium natus placeat odit incidunt error ex? Expedita iste magnam reprehenderit voluptate, a explicabo quidem dolorem quibusdam doloremque ipsum voluptatum itaque adipisci, numquam voluptates id? Maiores cum quo vero autem explicabo dicta facere qui culpa atque rerum illum, nihil corporis iure fugit? Corrupti dolorum alias dicta cum, dolore deleniti tempora minima. Ea quae enim repellendus id nostrum, nam, quas eum iste minima perferendis culpa.
+                                {data?.description}
                             </p>
                         </div>
                         <div className="hotelDetailsPrice">

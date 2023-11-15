@@ -5,12 +5,13 @@ const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const controller = new AbortController()
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true)
             try {
-                const response = await axios.get(url)
+                const response = await axios.get(url, { signal: controller.signal })
                 setData(response.data.data)
             } catch (error) {
                 setError(error)
@@ -18,12 +19,15 @@ const useFetch = (url) => {
             setLoading(false)
         }
         fetchData();
+        return function () {
+            controller.abort();
+        }
     }, [])
 
     const reFetchData = async () => {
         setLoading(true)
         try {
-            const response = await axios.get(url)
+            const response = await axios.get(url, { signal: controller.signal })
             setData(response.data.data)
         } catch (error) {
             setError(error)

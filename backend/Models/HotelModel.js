@@ -6,6 +6,10 @@ const HotelSchema = new Schema({
         type: String,
         required: true,
     },
+    title: {
+        type: String,
+        required: true,
+    },
     propertyType: {
         type: String,
         required: true,
