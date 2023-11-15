@@ -8,7 +8,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import useFetch from '../../hooks/useFetch'
 
 
-export default function ListSearch({ destination, location }) {
+export default function ListSearch({ destination, location, setMin, setMax, searchHandler }) {
     // const location = useLocation()
     // console.log(location)
 
@@ -20,6 +20,8 @@ export default function ListSearch({ destination, location }) {
     // console.log(data, "==>> data")
     // setDataFromSearch(data)
     // setLoadingFromSearch(loading)
+
+
 
     return (
         <div className='lsContainer'>
@@ -41,13 +43,13 @@ export default function ListSearch({ destination, location }) {
                     <span className="lsOptionText">
                         Min Price <small>per night</small>
                     </span>
-                    <input type="number" className='lsOptionInput' />
+                    <input type="number" onChange={e => setMin(e.target.value)} className='lsOptionInput' />
                 </div>
                 <div className="lsOptionItem">
                     <span className="lsOptionText">
                         Max Price <small>per night</small>
                     </span>
-                    <input type="number" className='lsOptionInput' />
+                    <input type="number" onChange={e => setMax(e.target.value)} className='lsOptionInput' />
                 </div>
                 <div className="lsOptionItem">
                     <span className="lsOptionText">
@@ -68,7 +70,7 @@ export default function ListSearch({ destination, location }) {
                     <input type="number" min={1} className='lsOptionInput' placeholder={options?.room} />
                 </div>
             </div>
-            <button className='lsBtn'>Search</button>
+            <button className='lsBtn' onClick={searchHandler}>Search</button>
         </div>
     )
 }

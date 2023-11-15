@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./searchItem.css"
 
 export default function SearchItem({ data }) {
@@ -12,7 +13,7 @@ export default function SearchItem({ data }) {
                     Studio Apartment with Air conditioning
                 </span>
                 <span className="siFeatures">
-                    Entire studio • 1 bathroom • 21m² 1 full bed
+                    {data?.description}
                 </span>
                 <span className="siCancelOp">Free cancellation </span>
                 <span className="siCancelOpSubtitle">
@@ -20,18 +21,20 @@ export default function SearchItem({ data }) {
                 </span>
             </div>
             <div className="siDetails">
-                <div className="siRating">
+                {data?.rating && <div className="siRating">
                     <span>Excellent</span>
-                    <button className="ratingBox">8.9</button>
-                </div>
+                    <button className="ratingBox">{data?.rating}</button>
+                </div>}
                 <div className="siDetailTexts">
                     <span className="siPrice">
-                        PKR 44,999
+                        $ {data?.chipestPrice}
                     </span>
                     <span className="siTax">
                         Includes taxes and fees
                     </span>
-                    <button className="siCheckBtn lsBtn">See Availablity</button>
+                    <Link to={`/hotels/${data?._id}`}>
+                        <button className="siCheckBtn lsBtn">See Availablity</button>
+                    </Link>
                 </div>
             </div>
         </div>

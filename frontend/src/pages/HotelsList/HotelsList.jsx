@@ -10,8 +10,14 @@ import { useLocation } from "react-router-dom";
 export default function HotelsList() {
     const location = useLocation()
     const [destination, setDestination] = useState(location.state.destination)
-    const { data, loading, error } = useFetch(`/hotels?city=${destination}`)
+    const [min, setMin] = useState(undefined)
+    const [max, setMax] = useState(undefined)
+    const { data, loading, error, reFetchData } = useFetch(`/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
     console.log(data, "===>>> data")
+
+    function searchHandler() {
+        reFetchData()
+    }
 
     return (
         <div>
@@ -20,7 +26,7 @@ export default function HotelsList() {
             <div className="hotelListContainer">
                 <div className="hotelListWrapper">
                     <div className="listSearch">
-                        <ListSearch destination={destination} location={location} />
+                        <ListSearch destination={destination} location={location} setMin={setMin} setMax={setMax} searchHandler={searchHandler} />
                     </div>
                     <div className="listResult">
                         {loading ? "Loading please wait" : <>
