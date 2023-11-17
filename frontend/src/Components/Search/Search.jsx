@@ -1,17 +1,19 @@
 import "./search.css";
 import { CalendarTodayOutlined, KingBedOutlined, PersonOutlineOutlined } from '@mui/icons-material'
 import { DateRange } from 'react-date-range';
-import { useState } from "react";
+import { useContext, useState } from "react";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
 import { useNavigate } from 'react-router-dom'
+import { SearchContext } from "../../Context/SearchContext";
 
 export default function Search() {
 
+    const { dispatch } = useContext(SearchContext)
     const navigate = useNavigate()
 
-    const [date, setDate] = useState([
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: new Date(),
@@ -37,7 +39,8 @@ export default function Search() {
     }
 
     function searchHandler() {
-        navigate('/hotels', { state: { destination, date, options } })
+        dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } })
+        navigate('/hotels', { state: { destination, dates, options } })
     }
 
     return (
@@ -49,15 +52,15 @@ export default function Search() {
                 </div>
                 <div className="searchItems reactDateRange" onClick={() => setShowDate(!showDate)}>
                     <CalendarTodayOutlined />
-                    <span className="checkInDateInput" >{`${format(date[0]?.startDate, "dd/MM/yyyy")} to ${format(date[0]?.endDate, "dd/MM/yyyy")}`}</span>
+                    <span className="checkInDateInput" >{`${format(dates[0]?.startDate, "dd/MM/yyyy")} to ${format(dates[0]?.endDate, "dd/MM/yyyy")}`}</span>
                     {
                         showDate && <DateRange
                             editableDateInputs={true}
-                            onChange={item => setDate([item.selection])}
+                            onChange={item => setDates([item.selection])}
                             moveRangeOnFirstSelection={false}
-                            ranges={date}
+                            ranges={dates}
                             className="dateRange"
-                            minDate={new Date()}    
+                            minDate={new Date()}
                         />
                     }
                 </div>

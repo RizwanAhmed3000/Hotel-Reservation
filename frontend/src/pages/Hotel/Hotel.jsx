@@ -6,12 +6,26 @@ import Footer from '../../Components/footer/Footer';
 import { LocationOn } from '@mui/icons-material';
 import useFetch from '../../hooks/useFetch'
 import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { SearchContext } from '../../Context/SearchContext';
 
 export default function Hotel() {
     const location = useLocation()
     // console.log(location)
     const hotelId = location.pathname.split("/")[2]
     // console.log(hotelId)
+
+    const { dates, options } = useContext(SearchContext)
+    console.log(dates, "===>>> dates")
+
+    const msPerDay = 1000 * 60 * 60 * 24;
+    function dayDifference(date1, date2) {
+        const timeDiff = Math.abs(date2.getTime() - date1.getTime())
+        const dayDiff = Math.ceil(timeDiff / msPerDay)
+        return dayDiff
+    }
+
+    const days = dayDifference(dates[0].endDate, dates[0].startDate)
 
     const { data, loading, error, reFetchData } = useFetch(`/hotels/find/${hotelId}`)
     console.log(data)
@@ -73,10 +87,10 @@ export default function Hotel() {
                             </p>
                         </div>
                         <div className="hotelDetailsPrice">
-                            <h1>Perfect for 9-night stay</h1>
+                            <h1>Perfect for {days}-night stay</h1>
                             <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam reiciendis atque dolores rem ex cupiditate deleniti.</span>
                             <h2>
-                                <b>PKR 144,000</b> for 9-nights
+                                <b>${days * data?.chipestPrice * options?.room}</b> for {days}-nights
                             </h2>
                             <button className='lsBtn'>Reserve or Book now</button>
                         </div>

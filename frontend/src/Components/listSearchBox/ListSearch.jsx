@@ -12,7 +12,7 @@ export default function ListSearch({ setDestination, destination, location, setM
     // const location = useLocation()
     // console.log(location)
 
-    const [date, setDate] = useState(location.state.date)
+    const [dates, setDates] = useState(location.state.dates)
     const [openDate, setOpenDate] = useState(false)
     const [options, setOptions] = useState(location.state.options)
 
@@ -33,9 +33,9 @@ export default function ListSearch({ setDestination, destination, location, setM
             <div className="lsItem">
                 <label htmlFor="">Check-in date</label>
                 <span onClick={() => setOpenDate(!openDate)}>
-                    {`${format(date[0]?.startDate, "dd/MM/yyyy")} to ${format(date[0]?.endDate, "dd/MM/yyyy")}`}
+                    {`${format(dates[0]?.startDate, "dd/MM/yyyy")} to ${format(dates[0]?.endDate, "dd/MM/yyyy")}`}
                 </span>
-                {openDate && <DateRange onChange={item => setDate(item.selection)} minDate={new Date()} ranges={date} editableDateInputs={true} moveRangeOnFirstSelection={false} />}
+                {openDate && <DateRange onChange={item => setDates(item.selection)} minDate={new Date()} ranges={dates} editableDateInputs={true} moveRangeOnFirstSelection={false} />}
             </div>
             <div className="lsItem">
                 <label htmlFor="">Options</label>
