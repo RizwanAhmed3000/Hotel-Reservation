@@ -1,10 +1,13 @@
 import axios from "axios"
 import { useContext } from "react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../Context/AuthContext"
 import "./login.css"
 
 export default function Login() {
+
+    const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({
         username: undefined,
@@ -23,6 +26,7 @@ export default function Login() {
         try {
             const res = await axios.post('/auth/login', credentials)
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data })
+            navigate('/')
         } catch (error) {
             dispatch({ type: "LOGIN_FAIL", payload: error.response.data })
         }
@@ -43,7 +47,7 @@ export default function Login() {
                         <label className="l-user-label">Password</label>
                     </div>
                     <button className="l-button searchBtn" onClick={loginHandler}>Login</button>
-                    {isError && <span className="err">{isError}</span>}
+                    {isError && <span className="err">{isError.message}</span>}
                 </div>
             </div>
         </>
