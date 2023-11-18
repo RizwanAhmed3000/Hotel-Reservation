@@ -9,17 +9,19 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { SearchContext } from '../../Context/SearchContext';
 import { AuthContext } from '../../Context/AuthContext';
+import { useState } from 'react';
+import ReserveModal from '../../Components/reserveModal/ReserveModal';
 
 export default function Hotel() {
     const location = useLocation()
     // console.log(location)
     const hotelId = location.pathname.split("/")[2]
     // console.log(hotelId)
-
     const { dates, options } = useContext(SearchContext)
     // console.log(dates, "===>>> dates")
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [openModal, setOpenModal] = useState(false)
 
 
     const msPerDay = 1000 * 60 * 60 * 24;
@@ -39,7 +41,7 @@ export default function Hotel() {
         if (!user) {
             navigate('/login')
         } else {
-            
+            setOpenModal(true)
         }
     }
 
@@ -112,6 +114,9 @@ export default function Hotel() {
             </div>
             <MailList />
             <Footer />
+            {
+                openModal && <ReserveModal setOpenModal={setOpenModal} hotelId={hotelId}/>
+            }
         </div>
     )
 }
