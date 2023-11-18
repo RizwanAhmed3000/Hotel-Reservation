@@ -5,9 +5,10 @@ import MailList from '../../Components/mailList/MailList';
 import Footer from '../../Components/footer/Footer';
 import { LocationOn } from '@mui/icons-material';
 import useFetch from '../../hooks/useFetch'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { SearchContext } from '../../Context/SearchContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 export default function Hotel() {
     const location = useLocation()
@@ -16,7 +17,10 @@ export default function Hotel() {
     // console.log(hotelId)
 
     const { dates, options } = useContext(SearchContext)
-    console.log(dates, "===>>> dates")
+    // console.log(dates, "===>>> dates")
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+
 
     const msPerDay = 1000 * 60 * 60 * 24;
     function dayDifference(date1, date2) {
@@ -28,7 +32,16 @@ export default function Hotel() {
     const days = dayDifference(dates[0].endDate, dates[0].startDate)
 
     const { data, loading, error, reFetchData } = useFetch(`/hotels/find/${hotelId}`)
-    console.log(data)
+    // console.log(data)
+
+    const reservationHandler = () => {
+        console.log("reservation handler chal raha hy")
+        if (!user) {
+            navigate('/login')
+        } else {
+            
+        }
+    }
 
 
     const photo = [
@@ -58,7 +71,7 @@ export default function Hotel() {
             <Header type={"hotelList"} />
             <div className="hotelContainer">
                 <div className="hotelWrapper">
-                    <button className="bookNow lsBtn">Reserve or Book now</button>
+                    <button className="bookNow lsBtn" onClick={reservationHandler}>Reserve or Book now</button>
                     <h1 className='hotelTitle'>{data?.name}</h1>
                     <div className="hotelAddress">
                         <LocationOn fontSize='15px' />
@@ -92,7 +105,7 @@ export default function Hotel() {
                             <h2>
                                 <b>${days * data?.chipestPrice * options?.room}</b> for {days}-nights
                             </h2>
-                            <button className='lsBtn'>Reserve or Book now</button>
+                            <button className='lsBtn' onClick={reservationHandler}>Reserve or Book now</button>
                         </div>
                     </div>
                 </div>
