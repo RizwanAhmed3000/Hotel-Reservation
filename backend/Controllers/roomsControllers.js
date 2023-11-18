@@ -37,6 +37,24 @@ export async function updateRoom(req, res, next) {
     }
 }
 
+// UPDATE A ROOMS
+// http://localhost:8800/api/rooms/available/:id
+export async function updateRoomAvailability(req, res, next) {
+    try {
+        await Room.updateOne(
+            { "roomNumber._id": req.params.id },
+            {
+                $push: {
+                    "roomNumber.$.unavailableDates": req.body.dates
+                },
+            }
+        );
+        res.status(200).json("Room status has been updated.");
+    } catch (error) {
+        next(error)
+    }
+}
+
 // DELETE A ROOMS
 // http://localhost:8800/api/rooms/:id/:hotelId
 export async function deleteRoom(req, res, next) {
