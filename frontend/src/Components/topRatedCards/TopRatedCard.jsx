@@ -1,4 +1,5 @@
 import useFetch from '../../hooks/useFetch'
+import Skeleton from '../Skeleton/Skeleton'
 import './topRatedCard.css'
 
 export default function TopRatedCard() {
@@ -14,7 +15,7 @@ export default function TopRatedCard() {
     return (
         <>
             {
-                loading ? "loading please wait" :
+                loading ? (<Skeleton type="feed" />) :
                     (<>
                         {images && data.map((item, i) => (
                             < div className='topCard' key={item?._id}>

@@ -1,4 +1,5 @@
 import useFetch from "../../hooks/useFetch"
+import Skeleton from "../Skeleton/Skeleton"
 import "./featured.css"
 
 export default function Featured() {
@@ -7,7 +8,7 @@ export default function Featured() {
 
     return (
         <>
-            {loading ? "Loading please wait" : (<><div className="featured">
+            {loading ? (<Skeleton type="feed"/>) : (<><div className="featured">
                 <div className="overlay"></div>
                 <img src='https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/03/11/fernsehturm.jpg' alt="" className="featuredImg" />
                 <div className="featuredTitles">

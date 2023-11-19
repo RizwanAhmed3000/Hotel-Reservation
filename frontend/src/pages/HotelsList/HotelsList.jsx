@@ -6,6 +6,7 @@ import SearchItem from "../../Components/searchItem/SearchItem";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import Skeleton from "../../Components/Skeleton/Skeleton";
 
 export default function HotelsList() {
     const location = useLocation()
@@ -29,7 +30,7 @@ export default function HotelsList() {
                         <ListSearch setDestination={setDestination} destination={destination} location={location} setMin={setMin} setMax={setMax} searchHandler={searchHandler} />
                     </div>
                     <div className="listResult">
-                        {loading ? "Loading please wait" : <>
+                        {loading ? (<Skeleton type="list"/>) : <>
                             {
                                 data.map((item) => (
                                     <SearchItem data={item} key={item?._id} />
