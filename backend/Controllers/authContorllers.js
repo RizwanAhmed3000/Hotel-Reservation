@@ -76,8 +76,8 @@ export async function forgotPassword(req, res, next) {
                 })
 
                 const mailOptions = {
-                    from: "rizz112khan@gmail.com",
-                    to: "rizz112khan@gmail.com",
+                    from: process.env.EMAIL_FROM,
+                    to: process.env.EMAIL_TO,
                     subject: "reset password link",
                     text: `Please click on the following link ${link} to reset your password`
                 }
