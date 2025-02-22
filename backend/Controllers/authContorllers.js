@@ -3,6 +3,8 @@ import bcryptjs from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { createError } from "../utils/error.js"
 import nodemailer from "nodemailer"
+import { serialize } from "cookie"
+import { response } from "express"
 
 export async function signUp(req, res, next) {
     try {
@@ -15,6 +17,7 @@ export async function signUp(req, res, next) {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
+            role: req.body.role,
         })
 
         const { password, ...other } = newUser._doc;
@@ -42,10 +45,12 @@ export async function login(req, res, next) {
             next(createError(400, "Incorrect email or password"))
             return
         };
-        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT, { expiresIn: '24h' });
-        const { password, isAdmin, ...other } = user._doc;
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT, { expiresIn: '24h' });
+        const { password, ...other } = user._doc;
         res.cookie("access_token", token, {
-            httpOnly: true
+            httpOnly: true,
+            // secure: process.env.NODE_ENV === 'production',
+            maxAge: 24 * 60 * 60 * 1000
         }).status(200).send({
             status: "Success",
             message: "User sign in successfully",

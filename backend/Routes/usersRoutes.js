@@ -17,7 +17,7 @@ usersRoutes.get('/checkadmin/:id', verifyAdmin, (req, res, next) => {
 })
 
 // UPDATE
-usersRoutes.put('/:userId', verifyUser, updateUser)
+usersRoutes.put('/:userId', verifyAdmin, updateUser)
 
 // DELETE
 usersRoutes.delete('/:userId', verifyUser, deleteUser)

@@ -5,7 +5,7 @@ import { verifyAdmin } from '../utils/verifyToken.js';
 const hotelsRoutes = express.Router();
 
 // CREATE
-hotelsRoutes.post('/', verifyAdmin, createHotel)
+hotelsRoutes.post('/', verifyAdmin, createHotel) //
 
 // UPDATE
 hotelsRoutes.put('/:hotelId', verifyAdmin, updateHotel)
@@ -17,7 +17,7 @@ hotelsRoutes.delete('/:hotelId', verifyAdmin, deleteHotel)
 hotelsRoutes.get('/find/:hotelId', getSingleHotel)
 
 // GET ALL
-hotelsRoutes.get('/', getAllHotel)
+hotelsRoutes.get('/', getAllHotel) //
 
 // GET ALL BY CITY
 hotelsRoutes.get('/countbycity', countByCity)
