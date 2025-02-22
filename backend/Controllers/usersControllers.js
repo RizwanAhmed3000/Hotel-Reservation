@@ -62,8 +62,8 @@ export async function getAllUser(req, res, next) {
         let allUser = await User.find()
         let users = [];
         allUser.map((user) => {
-            const { _id, username, email } = user
-            users.push({ _id, username, email })
+            const { _id, username, email, country, city, img, role, phoneNumber } = user
+            users.push({ _id, username, email, country, city, img, role, phoneNumber })
         });
         res.status(200).send({
             status: "success",

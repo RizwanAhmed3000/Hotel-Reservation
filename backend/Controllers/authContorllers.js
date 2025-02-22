@@ -14,10 +14,8 @@ export async function signUp(req, res, next) {
         const hashedPassword = await bcryptjs.hash(req.body.password, salt)
 
         const newUser = new UserModel({
-            username: req.body.username,
-            email: req.body.email,
+            ...req.body,
             password: hashedPassword,
-            role: req.body.role,
         })
 
         const { password, ...other } = newUser._doc;

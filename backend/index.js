@@ -30,7 +30,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(morgan('common'))
 app.use(cors({
-    origin: 'http://localhost:3000', // Your Next.js app domain
+    origin: 'http://localhost:3001', // Your Next.js app domain
     credentials: true
 }))
 
